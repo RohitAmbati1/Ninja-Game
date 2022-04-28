@@ -5,6 +5,7 @@ extends KinematicBody2D
 # var a = 2
 # var b = "text"
 export (int) var speed = 300
+onready var knife = $Knife 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,5 +32,8 @@ func _physics_process(delta):
 	self.move_and_slide(movement)
 	
 	self.look_at(get_global_mouse_position())
+	
+	if Input.is_action_just_pressed("attack"):
+		self.knife.visible = not self.knife.visible 
 	
 
