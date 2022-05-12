@@ -34,6 +34,7 @@ func _physics_process(delta):
 	self.look_at(get_global_mouse_position())
 	
 	if Input.is_action_just_pressed("attack"):
-		self.knife.visible = not self.knife.visible 
-	
+		self.knife.attack()
+	if Input.is_action_just_pressed("draw"):
+		self.knife.action()
 
