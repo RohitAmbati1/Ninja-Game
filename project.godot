@@ -8,11 +8,31 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Enemy.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Player.gd"
+} ]
+_global_script_class_icons={
+"Enemy": "",
+"Player": ""
+}
+
 [application]
 
 config/name="Vampire Game"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
+
+[global]
+
+resolution=false
 
 [input]
 

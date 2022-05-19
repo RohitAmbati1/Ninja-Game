@@ -26,6 +26,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 90.0002, 270.0 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 38, 41 )
@@ -43,7 +55,7 @@ shape = SubResource( 1 )
 
 [node name="Knife" type="Area2D" parent="."]
 position = Vector2( 6.66667, -1.90735e-06 )
-rotation = 4.71239
+rotation = 1.5708
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="Knife"]

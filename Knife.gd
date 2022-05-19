@@ -11,6 +11,7 @@ onready var animationplayer = $AnimationPlayer
 func _ready():
 	self.visible = false
 	$AnimationPlayer.get_animation("swing").length = 0.2
+	self.connect("body_entered", self, "handle_collision")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -20,3 +21,11 @@ func attack():
 	self.animationplayer.play("swing")
 func action():
 	self.visible = not self.visible
+func handle_collision(body):
+	if body is Player:
+	#	print("player hit")
+		return
+	if body is Enemy:
+		#print("enemy hit")
+		body.queue_free()
+		return
