@@ -6,15 +6,22 @@ class_name Player
 # var b = "text"
 export (int) var speed = 300
 onready var knife = $Knife 
+onready var health = $Health
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+	self.health.connect("health_reach_zero", self, "die")
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+func die():
+	pass
+	
 
 
 func _physics_process(delta):

@@ -6,7 +6,7 @@ extends Node
 # var b = "text"
 var enemy_scene = preload("res://Enemy.tscn")
 var rng = RandomNumberGenerator.new()
-onready var player: Player
+onready var player: Player = get_node("../Player")
 
 func spawn_enemy():
 	var enemy_instance: Enemy = enemy_scene.instance()
