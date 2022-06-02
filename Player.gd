@@ -24,7 +24,8 @@ func die():
 	
 
 
-func _physics_process(delta):
+func _physics_process(delta):	
+	self.health.current_value -= 2
 	var movement: Vector2 = Vector2.ZERO
 	if Input.is_action_pressed("up"):
 		movement += Vector2.UP
