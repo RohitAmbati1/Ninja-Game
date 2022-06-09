@@ -10,7 +10,7 @@ onready var player: Player = get_node("../Player")
 
 func spawn_enemy():
 	var enemy_instance: Enemy = enemy_scene.instance()
-	enemy_instance.global_position = Vector2(rng.randf_range(0,924),rng.randf_range(0,500))
+	enemy_instance.global_position = Vector2(rng.randf_range(308,616),rng.randf_range(580,600))
 	enemy_instance.player = self.player
 	self.add_child(enemy_instance)
 

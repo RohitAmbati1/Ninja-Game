@@ -2,8 +2,8 @@ extends Node
 
 signal health_reach_zero
 
-var max_value:int = 200
-var current_value:int = 200
+var max_value:int = 100
+var current_value:int = 100
 
 # Declare member variables here. Examples:
 # var a = 2

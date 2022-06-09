@@ -6,7 +6,7 @@ class_name Enemy
 # var b = "text"
 var player = null
 onready var health = $Health
-var speed: int = 200
+var speed: int = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
