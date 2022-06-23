@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Ninja_and_Enemies.png" type="Texture" id=1]
+[ext_resource path="res://Drone.gd" type="Script" id=2]
+[ext_resource path="res://Health.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 6.0
+height = 6.0
+
+[node name="Drone" type="KinematicBody2D"]
+position = Vector2( 74, 145 )
+scale = Vector2( 4, 4 )
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+rotation = 1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 40, 42, 17, 12 )
+
+[node name="Sprite_LitUp" type="Sprite" parent="."]
+rotation = 1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 72, 42, 17, 12 )
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Health" parent="." instance=ExtResource( 3 )]

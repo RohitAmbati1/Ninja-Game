@@ -1,24 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Fixed_UI.gd" type="Script" id=3]
+[ext_resource path="res://UI.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Main.gd" type="Script" id=4]
 [ext_resource path="res://Enemy manager.gd" type="Script" id=5]
-[ext_resource path="res://gamemappixelated.png" type="Texture" id=6]
-
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0, 0.6, 1, 1 )
-
-[sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 0, 0, 0, 1 )
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.356863, 1, 0.360784, 1 )
-
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0, 0, 0, 1 )
-draw_center = false
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 4 )
@@ -27,57 +13,7 @@ script = ExtResource( 4 )
 position = Vector2( 500, 325 )
 rotation = 1.5708
 
-[node name="Fixed UI" type="CanvasLayer" parent="."]
-script = ExtResource( 3 )
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="Fixed UI"]
-
-[node name="Sprite" type="Sprite" parent="Fixed UI/ParallaxBackground"]
-position = Vector2( 492, 361 )
-scale = Vector2( 3.04196, 2.1809 )
-texture = ExtResource( 6 )
-
-[node name="Margin" type="MarginContainer" parent="Fixed UI"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Fixed UI/Margin"]
-margin_right = 1004.0
-margin_bottom = 580.0
-
-[node name="Shieldbar" type="ProgressBar" parent="Fixed UI/Margin/VBoxContainer"]
-margin_right = 1004.0
-margin_bottom = 14.0
-custom_styles/fg = SubResource( 4 )
-custom_styles/bg = SubResource( 5 )
-
-[node name="Healthbar" type="ProgressBar" parent="Fixed UI/Margin/VBoxContainer"]
-margin_top = 18.0
-margin_right = 1004.0
-margin_bottom = 38.0
-rect_min_size = Vector2( 0, 20 )
-mouse_filter = 2
-custom_styles/fg = SubResource( 2 )
-custom_styles/bg = SubResource( 3 )
-max_value = 200.0
-value = 200.0
-
-[node name="Healthvalue" type="Label" parent="Fixed UI/Margin"]
-visible = false
-margin_top = 283.0
-margin_right = 1004.0
-margin_bottom = 297.0
-text = "50"
-align = 1
-
-[node name="FPS_tracker" type="Label" parent="Fixed UI/Margin"]
-margin_bottom = 14.0
-size_flags_horizontal = 2
-size_flags_vertical = 0
+[node name="Fixed UI" parent="." instance=ExtResource( 3 )]
 
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
 position = Vector2( 346, 245 )

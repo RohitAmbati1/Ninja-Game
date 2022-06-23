@@ -23,8 +23,7 @@ func die():
 	
 
 
-func _physics_process(delta):	
-	self.health.current_value -= 2
+func _physics_process(delta):
 	var movement: Vector2 = Vector2.ZERO
 	if Input.is_action_pressed("up"):
 		movement += Vector2.UP
@@ -44,4 +43,10 @@ func _physics_process(delta):
 		self.knife.attack()
 	if Input.is_action_just_pressed("draw"):
 		self.knife.action()
+		
+func take_damage(damage:int) -> void:
+	if self.shield.current_value > 0:
+		self.shield.current_value -= damage
+	if self.shield.current_value == 0:
+		self.health.current_value -= damage
 
