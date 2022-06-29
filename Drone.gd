@@ -28,6 +28,11 @@ func _physics_process(delta):
 	
 	if self.phase == "move":
 		var movement: Vector2 = self.destination - self.global_position
-		movement = movement.normalized()*self.speed
-		self.move_and_slide(movement)
+		if movement.length() < self.speed*delta:
+			self.global_position = self.destination
+			self.phase == "attack"
+			
+		else:
+			movement = movement.normalized()*self.speed
+			var velocity = self.move_and_slide(movement)
 		self.look_at(self.player.global_position)
