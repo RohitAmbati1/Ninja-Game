@@ -29,3 +29,5 @@ region_rect = Rect2( 72, 42, 17, 12 )
 shape = SubResource( 1 )
 
 [node name="Health" parent="." instance=ExtResource( 3 )]
+
+[node name="Timer" type="Timer" parent="."]
