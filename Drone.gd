@@ -42,34 +42,49 @@ func _physics_process(delta):
 func set_phase(new_phase):
 	if new_phase == phase:
 		return
-		
+	
+	phase = new_phase
+	
 	var timer = Timer.new()
 	timer.autostart = true
 	timer.wait_time = 0.5
+	timer.name = "Timer"
+	timer.one_shot = true
 	add_child(timer)
 	timer.connect("timeout", self, "prepare")
 	
 func prepare():
+	print("prepared "+self.name)
 	var timer = self.get_node("Timer")
+	#self.remove_child(timer)
+	timer.queue_free()
 	#change sprite
 	self.drone.visible = false
 	self.drone_attack.visible = true
 	#restart timer
-	timer.start()
-	#disconnect timer from prepare
-	timer.disconnect("timeout", self, "prepare")
+	timer = Timer.new()
+	timer.autostart = true
+	timer.wait_time = 0.5
+	timer.name = "Timer2"
+	timer.one_shot = true
+	add_child(timer)
 	#connect timer to shoot function
 	timer.connect("timeout", self, "attack")
-	#make shoot function
+
 func attack():
+	print ("attack "+self.name)
+	var timer = self.get_node("Timer2")
+	timer.disconnect("timeout", self, "attack")
 	#make the bullets
-	#tell them where to go
-	#add them to the main scene tree
+		#tell them where to go
+		#add them to the main scene tree
 	#reset timer to trigger moving again
-	pass
+	timer.connect("timeout", self, "move_again")
+	timer.start()
 	
 func move_again():
 	#remove the timer from drone
 	self.phase = "move"
+	self.destination = Vector2(rng.randf_range(100,924),rng.randf_range(100,500))
 	pass
 	

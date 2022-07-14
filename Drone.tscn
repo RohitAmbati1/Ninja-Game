@@ -30,4 +30,4 @@ shape = SubResource( 1 )
 
 [node name="Health" parent="." instance=ExtResource( 3 )]
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Temp_Timer" type="Timer" parent="."]
