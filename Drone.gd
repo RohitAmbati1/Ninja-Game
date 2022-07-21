@@ -11,6 +11,8 @@ var rng = RandomNumberGenerator.new()
 
 var phase = "move" setget set_phase
 
+var bullet_scene = preload("res://Bullet.tscn")
+
 var destination: Vector2
 
 
@@ -32,10 +34,9 @@ func _physics_process(delta):
 		if movement.length() < self.speed*delta:
 			self.global_position = self.destination
 			self.phase = "attack"
-			
 		else:
 			movement = movement.normalized()*self.speed
-# warning-ignore:unused_variable
+			# warning-ignore:unused_variable
 			var velocity = self.move_and_slide(movement)
 		self.look_at(self.player.global_position)
 
@@ -45,39 +46,33 @@ func set_phase(new_phase):
 	
 	phase = new_phase
 	
-	var timer = Timer.new()
-	timer.autostart = true
-	timer.wait_time = 0.5
-	timer.name = "Timer"
-	timer.one_shot = true
-	add_child(timer)
-	timer.connect("timeout", self, "prepare")
+	if phase == "attack":
+		var timer = $Timer
+		timer.wait_time = 0.5
+		timer.connect("timeout", self, "prepare")
+		timer.start()
 	
 func prepare():
-	print("prepared "+self.name)
-	var timer = self.get_node("Timer")
-	#self.remove_child(timer)
-	timer.queue_free()
+	var timer = $Timer
 	#change sprite
 	self.drone.visible = false
 	self.drone_attack.visible = true
 	#restart timer
-	timer = Timer.new()
-	timer.autostart = true
 	timer.wait_time = 0.5
-	timer.name = "Timer2"
-	timer.one_shot = true
-	add_child(timer)
-	#connect timer to shoot function
+	#connect timer to shoot functions
+	timer.disconnect("timeout",self, "prepare")
 	timer.connect("timeout", self, "attack")
+	timer.start()
 
 func attack():
-	print ("attack "+self.name)
-	var timer = self.get_node("Timer2")
+	var timer = $Timer
 	timer.disconnect("timeout", self, "attack")
 	#make the bullets
-		#tell them where to go
-		#add them to the main scene tree
+	var bullet = self.bullet_scene.instance()
+	#tell them where to go
+	bullet.direction = Vector2(cos(self.rotation), sin(self.rotation))
+	#add them to the main scene tree
+	self.add_child(bullet)
 	#reset timer to trigger moving again
 	timer.connect("timeout", self, "move_again")
 	timer.start()
@@ -86,5 +81,8 @@ func move_again():
 	#remove the timer from drone
 	self.phase = "move"
 	self.destination = Vector2(rng.randf_range(100,924),rng.randf_range(100,500))
-	pass
+	self.drone.visible = true
+	self.drone_attack.visible = false
+	var timer = $Timer
+	timer.disconnect("timeout", self, "move_again")
 	
