@@ -1,0 +1,7 @@
+* let the drones have burst patterns
+* bullets need to face player
+* bullets need to shoot faster
+
+- made bullets despawn
+- made walls
+- attach bullets to a static node

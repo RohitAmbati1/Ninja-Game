@@ -71,8 +71,9 @@ func attack():
 	var bullet = self.bullet_scene.instance()
 	#tell them where to go
 	bullet.direction = Vector2(cos(self.rotation), sin(self.rotation))
+	bullet.global_position = self.global_position
 	#add them to the main scene tree
-	self.add_child(bullet)
+	GlobalSignals.emit_signal("spawn_bullet", bullet)
 	#reset timer to trigger moving again
 	timer.connect("timeout", self, "move_again")
 	timer.start()

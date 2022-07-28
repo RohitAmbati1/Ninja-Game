@@ -26,7 +26,8 @@ func shoot():
 	
 
 func handle_hit(body: Node):
-	print(body)
+	if body is StaticBody2D:
+		queue_free()
 	
 
 
