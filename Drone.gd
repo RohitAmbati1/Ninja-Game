@@ -58,7 +58,7 @@ func prepare():
 	self.drone.visible = false
 	self.drone_attack.visible = true
 	#restart timer
-	timer.wait_time = 0.5
+	timer.wait_time = 1
 	#connect timer to shoot functions
 	timer.disconnect("timeout",self, "prepare")
 	timer.connect("timeout", self, "attack")
@@ -67,13 +67,15 @@ func prepare():
 func attack():
 	var timer = $Timer
 	timer.disconnect("timeout", self, "attack")
-	#make the bullets
-	var bullet = self.bullet_scene.instance()
-	#tell them where to go
-	bullet.direction = Vector2(cos(self.rotation), sin(self.rotation))
-	bullet.global_position = self.global_position
-	#add them to the main scene tree
-	GlobalSignals.emit_signal("spawn_bullet", bullet)
+	for i in range(3):
+		#make the bullets
+		var bullet = self.bullet_scene.instance()
+		#tell them where to go
+		bullet.direction = Vector2(cos(self.rotation), sin(self.rotation))
+		bullet.global_position = self.global_position
+		bullet.delay += 0.25*i
+		#add them to the main scene tree
+		GlobalSignals.emit_signal("spawn_bullet", bullet)
 	#reset timer to trigger moving again
 	timer.connect("timeout", self, "move_again")
 	timer.start()

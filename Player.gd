@@ -13,16 +13,12 @@ func _ready():
 	pass # Replace with function body.
 	self.health.connect("health_reach_zero", self, "die")
 	
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 func die():
 	pass
 	
-
-
 func _physics_process(delta):
 	var movement: Vector2 = Vector2.ZERO
 	if Input.is_action_pressed("up"):
@@ -47,6 +43,6 @@ func _physics_process(delta):
 func take_damage(damage:int) -> void:
 	if self.shield.current_value > 0:
 		self.shield.current_value -= damage
-	if self.shield.current_value == 0:
+	elif self.shield.current_value == 0:
 		self.health.current_value -= damage
-
+	
