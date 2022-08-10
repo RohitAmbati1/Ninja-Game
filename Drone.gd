@@ -18,11 +18,14 @@ var destination: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	self.health.current_value = 40
+	self.health.current_value = 20
 	self.drone_attack.visible = false
 	rng.randomize()
 	self.destination = Vector2(rng.randf_range(100,924),rng.randf_range(100,500))
+	$Health.connect("health_reach_zero", self, "die")
 
+func die():
+	self.queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -74,6 +77,7 @@ func attack():
 		bullet.direction = Vector2(cos(self.rotation), sin(self.rotation))
 		bullet.global_position = self.global_position
 		bullet.delay += 0.25*i
+		bullet.source = self
 		#add them to the main scene tree
 		GlobalSignals.emit_signal("spawn_bullet", bullet)
 	#reset timer to trigger moving again

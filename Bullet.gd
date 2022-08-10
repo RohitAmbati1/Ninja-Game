@@ -6,6 +6,7 @@ var direction: Vector2 = Vector2.ZERO
 var speed: float = 600
 var active: bool = false
 var delay: float = 0
+var source: Node = null
 
 func _physics_process(delta):
 	if self.active:
@@ -35,5 +36,5 @@ func handle_hit(body: Node):
 	if body is StaticBody2D:
 		queue_free()
 	if body is Player:
-		body.take_damage(15)
+		body.take_damage(15, self.source)
 		queue_free()

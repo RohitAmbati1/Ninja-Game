@@ -25,12 +25,11 @@ func action():
 	self.visible = not self.visible
 func handle_collision(body):
 	if body is Player:
-	#	print("player hit")
 		return
 	if body is Enemy:
-		#print("enemy hit")
-		#body.queue_free()
 		body.health.current_value -= 10
-		if body.health.current_value < 1:
-			body.queue_free()
 		return
+	if body is Drone:
+		body.health.current_value -= 10
+		return
+

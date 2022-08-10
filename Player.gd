@@ -8,6 +8,8 @@ export (int) var speed = 300
 onready var knife = $Knife 
 onready var health = $Health
 onready var shield = $Shield
+var killer: Node = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -17,7 +19,8 @@ func _ready():
 #func _process(delta):
 #	pass
 func die():
-	pass
+	print("YOU DIED")
+	print(self.killer)
 	
 func _physics_process(delta):
 	var movement: Vector2 = Vector2.ZERO
@@ -40,7 +43,8 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("draw"):
 		self.knife.action()
 		
-func take_damage(damage:int) -> void:
+func take_damage(damage:int, attacker: Node) -> void:
+	self.killer = attacker
 	if self.shield.current_value > 0:
 		self.shield.current_value -= damage
 	elif self.shield.current_value == 0:

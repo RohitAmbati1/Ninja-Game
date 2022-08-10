@@ -18,6 +18,8 @@ func _ready():
 
 func set_value(new_value):
 	current_value = clamp(new_value, min_value, max_value)
+	if current_value == 0:
+		emit_signal("health_reach_zero")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
