@@ -9,7 +9,6 @@ radius = 6.0
 height = 6.0
 
 [node name="Drone" type="KinematicBody2D"]
-position = Vector2( 74, 145 )
 scale = Vector2( 4, 4 )
 script = ExtResource( 2 )
 

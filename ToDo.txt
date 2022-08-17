@@ -1,7 +1,4 @@
-- enemies deal periodic dmg
-- make the player die
-* make more enemies spawn
-- make the drones killable
+WIP make more enemies spawn
 * game over segment
 * change background
 

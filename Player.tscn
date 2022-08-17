@@ -10,7 +10,6 @@ radius = 8.5
 height = 0.5
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 38, 41 )
 scale = Vector2( 3, 3 )
 script = ExtResource( 2 )
 
@@ -24,6 +23,7 @@ region_rect = Rect2( 8, 8, 17, 16 )
 shape = SubResource( 1 )
 
 [node name="Knife" parent="." instance=ExtResource( 3 )]
+position = Vector2( 7.33333, 2 )
 
 [node name="Health" parent="." instance=ExtResource( 1 )]
 

@@ -34,7 +34,7 @@ tracks/1/keys = {
 }
 
 [node name="Knife" type="Area2D"]
-position = Vector2( 6.66667, -1.90735e-06 )
+position = Vector2( 0, -4.54747e-13 )
 rotation = 1.5708
 script = ExtResource( 2 )
 

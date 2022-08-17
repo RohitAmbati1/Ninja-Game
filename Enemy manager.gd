@@ -1,35 +1,28 @@
 extends Node
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var enemy_scene = preload("res://Enemy.tscn")
-var drone_scene = preload("res://Drone.tscn")
 var rng = RandomNumberGenerator.new()
 onready var player: Player = get_node("../Player")
+var spawning: Array = []
+var waves: int = 0
 
-func spawn_enemy():
-	var enemy_instance: Enemy = enemy_scene.instance()
-	enemy_instance.global_position = Vector2(rng.randf_range(308,616),rng.randf_range(580,600))
-	enemy_instance.player = self.player
-	self.add_child(enemy_instance)
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	rng.randomize()
-	for i in range(4):
-		self.spawn_enemy()
-		self.spawn_drone()
+	for i in self.get_children():
+		if i is Position2D:
+			self.spawning.append(i.global_position)
+	$Timer.connect("timeout", self, "spawn_wave")
 
-func spawn_drone():
-	var enemy_instance: Drone = drone_scene.instance()
-	enemy_instance.global_position = Vector2(rng.randf_range(0,1024),rng.randf_range(0,600))
+func spawn_wave():
+	self.waves += 1
+	print("started wave %s" % self.waves)
+	for wave in range(self.waves):
+		for position in self.spawning:
+			self.spawn_enemy(position)
+
+func spawn_enemy(position: Vector2):
+	var enemy_instance: Enemy = enemy_scene.instance()
+	enemy_instance.global_position = position
 	enemy_instance.player = self.player
 	self.add_child(enemy_instance)
-	
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
