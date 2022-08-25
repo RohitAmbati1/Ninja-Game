@@ -19,8 +19,7 @@ func _ready():
 #func _process(delta):
 #	pass
 func die():
-	print("YOU DIED")
-	print(self.killer)
+	print("died")
 	
 func _physics_process(delta):
 	var movement: Vector2 = Vector2.ZERO
@@ -41,7 +40,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("attack"):
 		self.knife.attack()
 	if Input.is_action_just_pressed("draw"):
-		self.knife.action()
+		pass
 		
 func take_damage(damage:int, attacker: Node) -> void:
 	self.killer = attacker

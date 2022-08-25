@@ -28,7 +28,7 @@ rotation = 1.5708
 script = ExtResource( 5 )
 
 [node name="Top_Spawner" type="Position2D" parent="Enemy_manager"]
-position = Vector2( 512, 128 )
+position = Vector2( 512, -64 )
 
 [node name="Bottom_Spawner" type="Position2D" parent="Enemy_manager"]
 position = Vector2( 512, 664 )

@@ -1,4 +1,5 @@
 WIP make more enemies spawn
+* blocking (apex valk fuel w/out wait-to-recharge timer)
 * game over segment
-* change background
+* change theme
 

@@ -20,9 +20,11 @@ func spawn_wave():
 	for wave in range(self.waves):
 		for position in self.spawning:
 			self.spawn_enemy(position)
+	$Timer.start(3*log(self.waves)+5)
+		
 
 func spawn_enemy(position: Vector2):
 	var enemy_instance: Enemy = enemy_scene.instance()
-	enemy_instance.global_position = position
+	enemy_instance.global_position = position + Vector2(rng.randf_range(-10.0, 10.0), rng.randf_range(-10.0, 10.0))
 	enemy_instance.player = self.player
 	self.add_child(enemy_instance)
