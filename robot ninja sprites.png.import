@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/new ninja game sprites.png-512bf6fcae97b08bbaa36160bd2c0069.stex"
+path="res://.import/robot ninja sprites.png-c9d024098033a39790002c6e8720fed5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://new ninja game sprites.png"
-dest_files=[ "res://.import/new ninja game sprites.png-512bf6fcae97b08bbaa36160bd2c0069.stex" ]
+source_file="res://robot ninja sprites.png"
+dest_files=[ "res://.import/robot ninja sprites.png-c9d024098033a39790002c6e8720fed5.stex" ]
 
 [params]
 

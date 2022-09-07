@@ -6,11 +6,14 @@ extends Area2D
 # var b = "text"
 
 onready var animationplayer = $AnimationPlayer
-onready var hitbox = $CollisionShape2D
+onready var hitbox = $Attack_hitbox
+onready var block = $Block
 
 func _ready():
 	self.visible = true
 	self.hitbox.disabled = true
+	$Block_hitbox.disabled = true
+	self.block.visible = false
 	$AnimationPlayer.get_animation("swing").length = 0.2
 	self.connect("body_entered", self, "handle_collision")
 
