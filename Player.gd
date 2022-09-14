@@ -39,8 +39,6 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("attack"):
 		self.knife.attack()
-	if Input.is_action_just_pressed("draw"):
-		pass
 		
 func take_damage(damage:int, attacker: Node) -> void:
 	self.killer = attacker
