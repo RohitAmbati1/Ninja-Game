@@ -39,7 +39,8 @@ func handle_collision(body):
 	if body is Player:
 		return
 	if body is Enemy:
-		body.health.current_value -= 10
+		if $Attack_hitbox.disabled == false:
+			body.health.current_value -= 10
 		return
 	if body is Drone:
 		body.health.current_value -= 10

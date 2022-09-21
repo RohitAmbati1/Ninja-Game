@@ -1,5 +1,7 @@
-WIP make more enemies spawn
 * blocking (apex valk fuel w/out wait-to-recharge timer)
+* apply enemy atk/dmg logic to drones
+
+freezer
 * game over segment
-* change theme
+* change map
 

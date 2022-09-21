@@ -111,7 +111,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Block_hitbox:visible")
+tracks/3/path = NodePath("Block_hitbox:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -162,7 +162,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Block_hitbox:visible")
+tracks/2/path = NodePath("Block_hitbox:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -192,13 +192,13 @@ rotation = 1.5708
 script = ExtResource( 2 )
 
 [node name="Attack" type="Sprite" parent="."]
-visible = false
 position = Vector2( -7, 2.52724e-05 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 5, 7, 19, 4 )
 
 [node name="Block" type="Sprite" parent="."]
+visible = false
 position = Vector2( -6, -0.999979 )
 texture = ExtResource( 1 )
 region_enabled = true
@@ -209,9 +209,9 @@ position = Vector2( -7, 2.57492e-05 )
 shape = SubResource( 2 )
 
 [node name="Block_hitbox" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( -7.00001, -1.99998 )
 shape = SubResource( 4 )
+disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/block = SubResource( 5 )

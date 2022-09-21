@@ -32,10 +32,17 @@ func _physics_process(delta):
 
 func attack(body: Node):
 	if body is Player:
-		body.take_damage(5, self)
-		$Attack_Timer.start(2)
-		self.target = body
-		
+		#In attack mode, enemies can damage you
+		if body.knife.hitbox.disabled == false: 
+			body.take_damage(5, self)
+			$Attack_Timer.start(2)
+			self.target = body
+		#In block mode, enemies can damage you if not in blocking hitbox, otherwise will damage block hitbox
+		elif not (self in body.knife.get_overlapping_bodies()):
+			body.take_damage(5, self)
+			$Attack_Timer.start(2)
+			self.target = body
+			
 func repeated_attack():
 	self.target.take_damage(5, self)
 
