@@ -47,6 +47,3 @@ func spawn_drones(position: Vector2):
 	drone_instance.global_position = position + Vector2(rng.randf_range(-10.0, 10.0), rng.randf_range(-10.0, 10.0))
 	drone_instance.player = self.player
 	self.add_child(drone_instance)
-
-	
-	

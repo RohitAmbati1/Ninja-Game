@@ -37,7 +37,7 @@ func handle_hit(body: Node):
 		queue_free()
 	if body is Player:
 		#In attack mode, enemies can damage you
-		if body.knife.hitbox.disabled == false: 
+		if not body.knife.block.visible: 
 			body.take_damage(5, self.source)
 			print ("tookdmg")
 		#In block mode, enemies can damage you if not in blocking hitbox, otherwise will damage block hitbox
