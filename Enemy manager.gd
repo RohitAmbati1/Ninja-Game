@@ -22,7 +22,6 @@ func _ready():
 
 func spawn_enemy_wave():
 	self.enemy_waves += 1
-	print("started enemy wave %s" % self.enemy_waves)
 	for wave in range(self.enemy_waves):
 		for position in self.spawning:
 			self.spawn_enemy(position)
@@ -30,7 +29,6 @@ func spawn_enemy_wave():
 
 func spawn_drone_wave():
 	self.drone_waves += 1
-	print("started drone wave %s" % self.drone_waves)
 	for wave in range(self.drone_waves):
 		for position in self.spawning:
 			self.spawn_drones(position)

@@ -27,11 +27,9 @@ func _physics_process(delta):
 		self.block_meter += delta
 	self.block_meter = clamp(self.block_meter, 0, 4)
 	
-	#if block_meter == 0 and self.block.visible == true:
-		#self.unblock()
+	if block_meter == 0 and self.block.visible == true:
+		self.unblock()
 		
-	#print (block_meter)
-	
 func toggle_block():
 	if self.block.visible == true:
 		self.unblock()

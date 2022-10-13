@@ -35,13 +35,13 @@ func shoot():
 func handle_hit(body: Node):
 	if body is StaticBody2D:
 		queue_free()
+		return
+	
 	if body is Player:
 		#In attack mode, enemies can damage you
 		if not body.knife.block.visible: 
 			body.take_damage(5, self.source)
-			print ("tookdmg")
 		#In block mode, enemies can damage you if not in blocking hitbox, otherwise will damage block hitbox
-		elif not (self in body.knife.get_overlapping_bodies()):
+		elif not (self.overlaps_area(body.knife)):
 			body.take_damage(5, self.source)
-			print ("knifetookdmg")
 		queue_free()
