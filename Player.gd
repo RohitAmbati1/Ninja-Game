@@ -4,11 +4,12 @@ class_name Player
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-export (int) var speed = 300
+export (int) var speed = 500
 onready var knife = $Knife 
 onready var health = $Health
 onready var shield = $Shield
-onready var block_meter = $Blockbar
+onready var block_meter = $Node2D/Blockbar
+var kills = 0 
 var killer: Node = null
 
 
@@ -17,6 +18,7 @@ func _ready():
 
 func _process(delta):
 	$Node2D.set_rotation(self.rotation*-1)
+	block_meter.value = knife.block_meter
 	#self.block_meter.set_position(Vector2(8,11))
 func die():
 	print("died")

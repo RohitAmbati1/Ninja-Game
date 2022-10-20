@@ -2,6 +2,7 @@ extends Area2D
 
 class_name bullet
 
+
 var direction: Vector2 = Vector2.ZERO
 var speed: float = 600
 var active: bool = false

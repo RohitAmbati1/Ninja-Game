@@ -1,6 +1,7 @@
 extends KinematicBody2D
 class_name Drone
 
+signal died
 # Declare member variables here. Examples:
 var player = null
 onready var health = $Health
@@ -18,7 +19,7 @@ var destination: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	self.health.current_value = 20
+	self.health.current_value = 10
 	self.drone_attack.visible = false
 	rng.randomize()
 	self.destination = Vector2(rng.randf_range(100,924),rng.randf_range(100,500))
@@ -26,6 +27,7 @@ func _ready():
 
 func die():
 	self.queue_free()
+	self.emit_signal("died")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
